@@ -54,7 +54,7 @@ class Kitsch < Formula
   end
 
   def post_install
-    system "kitsch" "setup"
+    system "kitsch", "setup"
 
   end
 end
