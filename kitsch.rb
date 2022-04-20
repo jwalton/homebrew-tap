@@ -5,12 +5,20 @@
 class Kitsch < Formula
   desc ""
   homepage "https://kitschprompt.com"
-  version "0.0.11"
+  version "0.0.13"
 
   on_macos do
+    if Hardware::CPU.intel?
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Darwin_x86_64.tar.gz"
+      sha256 "90cce2f228428b3337028fc6f26788c7cbcf532aa7ec97426867ed8790702349"
+
+      def install
+        bin.install "kitsch"
+      end
+    end
     if Hardware::CPU.arm?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.11/kitsch_Darwin_arm64.tar.gz"
-      sha256 "d759ceea035c0d8cac6fd90bcc7e03af2ef154abf46d5311ab4a252c981cc8b9"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Darwin_arm64.tar.gz"
+      sha256 "cea495c9a722a1ea7867fbdfc1c55609fdddb8fa5a76305e51fbd9a5d63518d2"
 
       def install
         bin.install "kitsch"
@@ -19,17 +27,25 @@ class Kitsch < Formula
   end
 
   on_linux do
+    if Hardware::CPU.intel?
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Linux_x86_64.tar.gz"
+      sha256 "73658664c7461637261e930b2c0ac27b20425803c464d0d4ff75446c530c351c"
+
+      def install
+        bin.install "kitsch"
+      end
+    end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.11/kitsch_Linux_arm64.tar.gz"
-      sha256 "68324fc644c689439c6755ec484fb30335c56bfdebc678666fc44bdc260e1302"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Linux_arm64.tar.gz"
+      sha256 "3d6f15690779e63eac3eac9eb6de86b9c9aa6b0c9233a0f8bdfb194a4370f780"
 
       def install
         bin.install "kitsch"
       end
     end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.11/kitsch_Linux_armv6.tar.gz"
-      sha256 "c28ebafad8574933d7b8902fe80997f307eedcba7d8bef064b3846905a91a78e"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Linux_armv6.tar.gz"
+      sha256 "d6d20e5e5387e6e6628199396942617326b3e133cd53d8cb2bf0b568f4e161b4"
 
       def install
         bin.install "kitsch"
