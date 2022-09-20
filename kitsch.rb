@@ -5,20 +5,20 @@
 class Kitsch < Formula
   desc ""
   homepage "https://kitschprompt.com"
-  version "0.0.13"
+  version "0.0.14"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Darwin_x86_64.tar.gz"
-      sha256 "90cce2f228428b3337028fc6f26788c7cbcf532aa7ec97426867ed8790702349"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Darwin_x86_64.tar.gz"
+      sha256 "1623c0de41daaa8e03cb7914039f980ae8748bdb779833824da316ecde474ab4"
 
       def install
         bin.install "kitsch"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Darwin_arm64.tar.gz"
-      sha256 "cea495c9a722a1ea7867fbdfc1c55609fdddb8fa5a76305e51fbd9a5d63518d2"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Darwin_arm64.tar.gz"
+      sha256 "f1173b6138641e7715bf49f5df9f6b34a2e86c735a35609aab32166fe8fcaceb"
 
       def install
         bin.install "kitsch"
@@ -27,25 +27,25 @@ class Kitsch < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Linux_x86_64.tar.gz"
-      sha256 "73658664c7461637261e930b2c0ac27b20425803c464d0d4ff75446c530c351c"
+    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Linux_armv6.tar.gz"
+      sha256 "b66b5db30ea2b848581ce606bd00b11229360eea18dce655faa9b12b777541c5"
 
       def install
         bin.install "kitsch"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Linux_arm64.tar.gz"
-      sha256 "3d6f15690779e63eac3eac9eb6de86b9c9aa6b0c9233a0f8bdfb194a4370f780"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Linux_arm64.tar.gz"
+      sha256 "8041554c81bafbae908ee6dcb05f95a0be19e5ab8c7b718ccffb842cd8344908"
 
       def install
         bin.install "kitsch"
       end
     end
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.13/kitsch_Linux_armv6.tar.gz"
-      sha256 "d6d20e5e5387e6e6628199396942617326b3e133cd53d8cb2bf0b568f4e161b4"
+    if Hardware::CPU.intel?
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Linux_x86_64.tar.gz"
+      sha256 "35f9e0c0fdd7b2e0b4416e2794a941b50096ba53feb30ac24fb67bafce5a876c"
 
       def install
         bin.install "kitsch"
@@ -53,13 +53,14 @@ class Kitsch < Formula
     end
   end
 
-  def caveats; <<~EOS
-    ***************************************************************************
+  def caveats
+    <<~EOS
+      ***************************************************************************
 
-      Please run "kitsch setup" for details about how to configure your shell
-      to use kitsch.
+        Please run "kitsch setup" for details about how to configure your shell
+        to use kitsch.
 
-    ***************************************************************************
-  EOS
+      ***************************************************************************
+    EOS
   end
 end
