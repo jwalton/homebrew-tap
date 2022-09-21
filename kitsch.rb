@@ -5,20 +5,20 @@
 class Kitsch < Formula
   desc ""
   homepage "https://kitschprompt.com"
-  version "0.0.14"
+  version "0.0.15"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Darwin_x86_64.tar.gz"
-      sha256 "1623c0de41daaa8e03cb7914039f980ae8748bdb779833824da316ecde474ab4"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.15/kitsch_Darwin_x86_64.tar.gz"
+      sha256 "fa758a66dcc1aba079f6044dbcc9b3dad45e70e3c5b4f3226db3dfb8fe3e679b"
 
       def install
         bin.install "kitsch"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Darwin_arm64.tar.gz"
-      sha256 "f1173b6138641e7715bf49f5df9f6b34a2e86c735a35609aab32166fe8fcaceb"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.15/kitsch_Darwin_arm64.tar.gz"
+      sha256 "078e1f6d47929a10e62b006be769f0c0b5c62bc69b8ece4cdd813dedc6d0b9b2"
 
       def install
         bin.install "kitsch"
@@ -27,25 +27,25 @@ class Kitsch < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Linux_armv6.tar.gz"
-      sha256 "b66b5db30ea2b848581ce606bd00b11229360eea18dce655faa9b12b777541c5"
+    if Hardware::CPU.intel?
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.15/kitsch_Linux_x86_64.tar.gz"
+      sha256 "e34a6bcca1d561b5e81add254afdb9c4c69e61b562bf19a88e7ee578f5597de6"
 
       def install
         bin.install "kitsch"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Linux_arm64.tar.gz"
-      sha256 "8041554c81bafbae908ee6dcb05f95a0be19e5ab8c7b718ccffb842cd8344908"
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.15/kitsch_Linux_arm64.tar.gz"
+      sha256 "ce7252c48da9ff05a1891bdd40bcb1888528d196109a2ce6a496e9b9dc5d1012"
 
       def install
         bin.install "kitsch"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/jwalton/kitsch/releases/download/v0.0.14/kitsch_Linux_x86_64.tar.gz"
-      sha256 "35f9e0c0fdd7b2e0b4416e2794a941b50096ba53feb30ac24fb67bafce5a876c"
+    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+      url "https://github.com/jwalton/kitsch/releases/download/v0.0.15/kitsch_Linux_armv6.tar.gz"
+      sha256 "a834fff454832ec93105a00e2cb766d815fa7747984072e82793783886958845"
 
       def install
         bin.install "kitsch"
